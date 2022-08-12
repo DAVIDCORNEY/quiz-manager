@@ -1,16 +1,11 @@
 import { ReactElement, useEffect, useState } from "react";
 import { ApiError, OpenAPI, QuizControllerService, QuizWithRelations } from "../../services/openapi";
 import QuizItem from "../QuizItem/QuizItem";
+import { getToken } from "../../utils/getToken";
 
 const Quiz = (): ReactElement => {
     const [quizzes, setQuizzes] = useState<Array<QuizWithRelations>>([]);
     const [error, setError] = useState<ApiError|null>();
-
-    const getToken = ():string => {
-        const userToken = localStorage.getItem('token');
-        const tokenString = JSON.parse(userToken as string);
-        return tokenString.token;
-    }
 
     const authToken = getToken();
 
@@ -26,6 +21,8 @@ const Quiz = (): ReactElement => {
             .then((quizzes) => setQuizzes(quizzes))
             .catch((error) => setError(error));
     },[]);
+
+    if(error) {console.log(error)};
 
     const quizList = quizzes.map((quiz) => {
         return(

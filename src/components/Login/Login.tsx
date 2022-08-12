@@ -18,7 +18,6 @@ const Login = ({setToken}: Props): ReactElement => {
         let jwtData = token.token?.split('.')[1];
         let decodedJwtJsonData = window.atob(jwtData!);
         let decodedJwtData = JSON.parse(decodedJwtJsonData);
-        console.log(decodedJwtData);
         localStorage.setItem('role', decodedJwtData.role);
         localStorage.setItem('token', JSON.stringify(token));
         setToken(token as string);

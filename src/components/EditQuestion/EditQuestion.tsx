@@ -1,6 +1,7 @@
 import React, { ReactElement, useEffect, useState, useRef } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { ApiError, OpenAPI, QuestionControllerService, QuestionExcluding_id_quizId_WithRelations, QuestionPartialExcluding_id_quizId_ } from '../../services/openapi';
+import { getToken } from '../../utils/getToken';
 
 const EditQuestion = (): ReactElement => {
     let navigate = useNavigate();
@@ -18,12 +19,6 @@ const EditQuestion = (): ReactElement => {
     const option1Input = useRef<HTMLInputElement>(null);
     const option2Input = useRef<HTMLInputElement>(null);
     const option3Input = useRef<HTMLInputElement>(null);
-    
-    const getToken = ():string => {
-        const userToken = localStorage.getItem('token');
-        const tokenString = JSON.parse(userToken as string);
-        return tokenString.token;
-    }
 
     const authToken = getToken();
 
@@ -40,7 +35,9 @@ const EditQuestion = (): ReactElement => {
         QuestionControllerService.questionControllerFindById(id!)
             .then((question) => setQuestion(question))
             .catch((error) => setError(error))
-    },[]);
+    },[id]);
+
+    if(error) {console.log(error)};
 
     const editQuestion = (id:string | undefined, questionData:QuestionPartialExcluding_id_quizId_) => {
         QuestionControllerService.questionControllerUpdateById(id!, questionData)
