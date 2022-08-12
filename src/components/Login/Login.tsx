@@ -15,6 +15,11 @@ const Login = ({setToken}: Props): ReactElement => {
         event.preventDefault(); 
         const body = {email, password}
         const token = await UserControllerService.userControllerLogin(body);
+        let jwtData = token.token?.split('.')[1];
+        let decodedJwtJsonData = window.atob(jwtData!);
+        let decodedJwtData = JSON.parse(decodedJwtJsonData);
+        console.log(decodedJwtData);
+        localStorage.setItem('role', decodedJwtData.role);
         localStorage.setItem('token', JSON.stringify(token));
         setToken(token as string);
     }

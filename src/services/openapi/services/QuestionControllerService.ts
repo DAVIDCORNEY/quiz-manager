@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { Question } from '../models/Question';
+import type { QuestionExcluding_id_quizId_WithRelations } from '../models/QuestionExcluding_id_quizId_WithRelations';
 import type { QuestionPartialExcluding_id_quizId_ } from '../models/QuestionPartialExcluding_id_quizId_';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
@@ -49,6 +50,28 @@ requestBody?: QuestionPartialExcluding_id_quizId_,
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * @param id 
+     * @param filter 
+     * @returns QuestionExcluding_id_quizId_WithRelations Question model instance
+     * @throws ApiError
+     */
+    public static questionControllerFindById(
+id: string,
+filter?: any,
+): CancelablePromise<QuestionExcluding_id_quizId_WithRelations> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/questions/{id}',
+            path: {
+                'id': id,
+            },
+            query: {
+                'filter': filter,
+            },
         });
     }
 

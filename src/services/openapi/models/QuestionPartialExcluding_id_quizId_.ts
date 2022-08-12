@@ -8,5 +8,7 @@
 export type QuestionPartialExcluding_id_quizId_ = {
     question?: string;
     answer?: string;
-    options?: Array<string>;
+    option1?: string;
+    option2?: string;
+    option3?: string;
 };

@@ -6,19 +6,43 @@ interface Props {
     question: Question
 }
 
+const userRole = localStorage.getItem('role');
+
+const isAllowedToEditQuestions = (userRole:string) => {
+    if(userRole === 'admin' || userRole === 'customer'){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+const isNotAllowedToViewAnswers = (userRole:string) => {
+    if(userRole === 'guest'){
+        return false
+    }else {
+        return true
+    }
+}
+
 const QuizItem = ({question}: Props): ReactElement => {
     return (
         <div>
             <li>
                 {question.question}
             </li>
-            {question.options.map(option => {
-                return(
-                    <li>{option}</li>
-                )
-            })}
-            <Link to={`/question/edit/${question.id}`}>Edit</Link>
-            <button>Delete</button>
+            {isNotAllowedToViewAnswers(userRole!) &&
+                <>
+                <li>{question.option1}</li>
+                <li>{question.option2}</li>
+                <li>{question.option3}</li>
+                </>
+            }
+            {isAllowedToEditQuestions(userRole!) && (
+                <>
+                    <Link to={`/question/edit/${question.id}`}>Edit</Link>
+                    <button>Delete</button>
+                </>
+            )}
         </div>
     )
 }

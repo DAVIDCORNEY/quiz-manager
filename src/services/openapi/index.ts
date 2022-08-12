@@ -14,12 +14,17 @@ export { NewUserRequestExcluding_id_ } from './models/NewUserRequestExcluding_id
 export type { NewUserRequestExcluding_id_role_ } from './models/NewUserRequestExcluding_id_role_';
 export type { PingResponse } from './models/PingResponse';
 export type { Question } from './models/Question';
+export type { Question_Filter } from './models/Question_Filter';
+export type { Question_IncludeFilter_Items } from './models/Question_IncludeFilter_Items';
+export type { Question_ScopeFilter } from './models/Question_ScopeFilter';
+export type { QuestionExcluding_id_quizId_WithRelations } from './models/QuestionExcluding_id_quizId_WithRelations';
 export type { QuestionPartialExcluding_id_quizId_ } from './models/QuestionPartialExcluding_id_quizId_';
 export type { QuestionWithRelations } from './models/QuestionWithRelations';
 export type { Quiz } from './models/Quiz';
 export type { Quiz_Filter } from './models/Quiz_Filter';
 export type { Quiz_IncludeFilter_Items } from './models/Quiz_IncludeFilter_Items';
 export type { Quiz_ScopeFilter } from './models/Quiz_ScopeFilter';
+export type { QuizExcluding_id_quizId_WithRelations } from './models/QuizExcluding_id_quizId_WithRelations';
 export type { QuizPartialExcluding_id_ } from './models/QuizPartialExcluding_id_';
 export type { QuizWithRelations } from './models/QuizWithRelations';
 export { User } from './models/User';

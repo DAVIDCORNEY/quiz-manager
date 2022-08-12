@@ -11,7 +11,9 @@ export type QuestionWithRelations = {
     id?: string;
     question: string;
     answer: string;
-    options: Array<string>;
+    option1: string;
+    option2: string;
+    option3: string;
     quizId?: string;
     quiz?: QuizWithRelations;
 };

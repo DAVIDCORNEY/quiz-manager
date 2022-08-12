@@ -7,7 +7,6 @@ import { ReactElement, useState } from 'react';
 
 const AppRouter = ():ReactElement => {
     const [token, setToken] = useState<string>("");
-    console.log('TOKEN', token)
     if(!token) {
         return <Login setToken={setToken}/>
     }
