@@ -1,6 +1,6 @@
 # Getting Started with this project
 
-This application will need to run on PORT 3001 in order to prevent in conflicting with the backend api (Quiz Master API) which runs on PORT 3000.
+This application will need to run on PORT 3001 in order to prevent it conflicting with the backend api (Quiz Master API) which runs on PORT 3000.
 
 In order to do this, simply create a .env file at the root of the project and copy accross the PORT environment variable from the .env.example file.
 
